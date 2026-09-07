@@ -1,0 +1,4 @@
+# Processed item registry - appended by digest runs. Format: <date><TAB><key>
+# <key> is an item-level URL (article post, release tag, incident permalink),
+# or for sources without per-entry URLs: <source-key>::<date> <entry title>.
+# Index/changelog PAGE URLs must NEVER be recorded here (they would block all future runs).

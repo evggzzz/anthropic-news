@@ -1,0 +1,7 @@
+node_modules/
+.DS_Store
+.claude/settings.local.json
+.playwright-mcp/
+*_scraper.js
+script_*.js
+tasks/
