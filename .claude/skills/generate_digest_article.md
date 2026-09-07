@@ -115,6 +115,10 @@ Derive: TARGET_DATE_COMPACT (YYYYMMDD) and TARGET_DATE_JP (YYYY年M月D日) from
      ```bash
      npx textlint articles/anthropic_[TARGET_DATE_COMPACT].md --format json > resources/[TARGET_DATE]/textlint-report.json
      ```
+   - **CRITICAL (privacy)**: the JSON report contains absolute local paths. Strip them — the repo is public:
+     ```bash
+     sed -i '' "s|$(pwd)/||g" resources/[TARGET_DATE]/textlint-report.json
+     ```
    - **IMPORTANT**: This step is non-blocking - continue even if textlint finds issues
    - The `--fix` option automatically corrects fixable issues
 

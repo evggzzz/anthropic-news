@@ -142,7 +142,7 @@ git add resources/[TARGET_DATE]/ articles/ state/
 git commit -m "Add Anthropic digest for [TARGET_DATE]
 
 🤖 Generated with Claude Code
-Co-Authored-By: Claude <noreply@anthropic.com>"
+Co-Authored-By: Claude Code <noreply@anthropic.com>"
 git push origin main
 ```
 

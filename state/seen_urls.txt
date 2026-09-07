@@ -2,3 +2,18 @@
 # <key> is an item-level URL (article post, release tag, incident permalink),
 # or for sources without per-entry URLs: <source-key>::<date> <entry title>.
 # Index/changelog PAGE URLs must NEVER be recorded here (they would block all future runs).
+2026-09-08	platform-release-notes::2026-09-03 ant CLI 1.30.0 adds ant apply
+2026-09-08	https://www.anthropic.com/research/formalizing-fermats-last-theorem
+2026-09-08	https://github.com/anthropics/claude-agent-sdk-typescript/releases/tag/v0.3.263
+2026-09-08	https://github.com/anthropics/claude-agent-sdk-typescript/releases/tag/v0.3.261
+2026-09-08	https://github.com/anthropics/claude-agent-sdk-typescript/releases/tag/v0.3.260
+2026-09-08	https://github.com/anthropics/claude-agent-sdk-typescript/releases/tag/v0.3.259
+2026-09-08	https://github.com/anthropics/claude-agent-sdk-python/releases/tag/v0.2.152
+2026-09-08	https://github.com/anthropics/claude-code/releases/tag/v2.1.259
+2026-09-08	https://github.com/anthropics/claude-code/releases/tag/v2.1.260
+2026-09-08	https://github.com/anthropics/claude-code/releases/tag/v2.1.261
+2026-09-08	https://github.com/anthropics/claude-code/releases/tag/v2.1.263
+2026-09-08	https://status.claude.com/incidents/461yvfrzpwtt
+2026-09-08	https://status.claude.com/incidents/288w7p4hk1l1
+2026-09-08	https://status.claude.com/incidents/ls6bn1x81m0w
+2026-09-08	https://status.claude.com/incidents/620swtqyn24k
