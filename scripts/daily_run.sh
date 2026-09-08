@@ -15,11 +15,13 @@ export LC_ALL=ja_JP.UTF-8
 # 資格情報が取れない場合にプロンプトで固めない（即failさせる）
 export GIT_TERMINAL_PROMPT=0
 
-# claude CLI の認証・モデル設定は ~/.zshrc の ANTHROPIC_*/CLAUDE_CODE_* 行から動的に読み込む。
+# claude CLI の認証・モデル設定は ~/.zshrc から動的に読み込む。
 # （launchdはシェルプロファイルを読まない。トークンをこのスクリプト/repoに直接書かないため，
 #   プロバイダ切替時も .zshrc の編集だけで追従できる）
+# 注意: ANTHROPIC_AUTH_TOKEN が .zshrc 内で別変数（Z_AI_API_KEY）を参照しているため、
+# その定義行も対象に含める。プロバイダを切り替えて参照する変数が変わったら、ここに変数名を追加すること。
 if [ -f "$HOME/.zshrc" ]; then
-  eval "$(grep -E '^export (ANTHROPIC_|CLAUDE_CODE_)' "$HOME/.zshrc" | sed 's/^export //')" || true
+  eval "$(grep -E '^export (ANTHROPIC_|CLAUDE_CODE_|Z_AI_API_KEY)' "$HOME/.zshrc" | sed 's/^export //')" || true
 fi
 
 PROJECT="$HOME/.claude/anthropic-news"
