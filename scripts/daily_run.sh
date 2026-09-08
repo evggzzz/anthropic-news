@@ -15,6 +15,13 @@ export LC_ALL=ja_JP.UTF-8
 # 資格情報が取れない場合にプロンプトで固めない（即failさせる）
 export GIT_TERMINAL_PROMPT=0
 
+# claude CLI の認証・モデル設定は ~/.zshrc の ANTHROPIC_*/CLAUDE_CODE_* 行から動的に読み込む。
+# （launchdはシェルプロファイルを読まない。トークンをこのスクリプト/repoに直接書かないため，
+#   プロバイダ切替時も .zshrc の編集だけで追従できる）
+if [ -f "$HOME/.zshrc" ]; then
+  eval "$(grep -E '^export (ANTHROPIC_|CLAUDE_CODE_)' "$HOME/.zshrc" | sed 's/^export //')" || true
+fi
+
 PROJECT="$HOME/.claude/anthropic-news"
 cd "$PROJECT" || exit 1
 
