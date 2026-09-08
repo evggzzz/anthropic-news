@@ -12,6 +12,8 @@ set -u
 export PATH="/opt/homebrew/bin:/usr/local/bin:$HOME/.local/bin:/usr/bin:/bin"
 export LANG=ja_JP.UTF-8
 export LC_ALL=ja_JP.UTF-8
+# 資格情報が取れない場合にプロンプトで固めない（即failさせる）
+export GIT_TERMINAL_PROMPT=0
 
 PROJECT="$HOME/.claude/anthropic-news"
 cd "$PROJECT" || exit 1
