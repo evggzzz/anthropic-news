@@ -13,23 +13,29 @@ Anthropic公式情報の特化ダイジェストプロジェクト。Anthropic�
   - `/anthropic_digest_pipeline 2026-09-08 1` のように日付と日数を指定可能（日次運用・バックフィル）
 - **成果物**: `articles/anthropic_YYYYMMDD.md`（Zenn形式・textlint検証済み）
 
-## 毎朝の自動運用（launchd 2ジョブ構成）
+## 毎朝の自動運用（launchd 2ジョブ + ランタイムコピー構成）
 
 | 時刻 | LaunchAgent | 内容 |
 |---|---|---|
-| 09:00 | `com.evggzzz.anthropic-news.digest` | `scripts/daily_run.sh` — コマンドの `$ARGUMENTS` に「今日 2」を埋め込んで `claude -p --dangerously-skip-permissions` でheadless実行。days=2（昨日〜今日）+ seen_urls重複排除で米国時間の遅延掲載も取りこぼさない |
-| 10:00 | `com.evggzzz.anthropic-news.deliver` | `scripts/deliver.sh` — macOS通知（まとめ抜粋をARGV経由でosascriptに渡す）+ VS Codeで当日記事を開く。記事がなければ「未生成」通知 |
+| 09:00 | `com.evggzzz.anthropic-news.digest` | `~/.claude/anthropic-news/scripts/daily_run.sh` — `git pull` で最新化 → コマンドの `$ARGUMENTS` に「今日 2」を埋め込んで `claude -p --dangerously-skip-permissions` でheadless実行 → commit/push。days=2（昨日〜今日）+ seen_urls重複排除で米国時間の遅延掲載も取りこぼさない |
+| 10:00 | `com.evggzzz.anthropic-news.deliver` | `~/.claude/anthropic-news/scripts/deliver.sh` — macOS通知（まとめ抜粋をARGV経由でosascriptに渡す）+ VS Codeで当日記事を開く。記事がなければ「未生成」通知 |
 
 - 手動トリガー: `launchctl kickstart -k gui/$(id -u)/com.evggzzz.anthropic-news.digest`（または deliver）
-- ログ: `logs/daily_YYYYMMDD.log`（gitignore済み）
+- ログ: ランタイムコピーの `logs/daily_YYYYMMDD.log`（gitignore済み）
 - Macがスリープ中でも、解除時にlaunchdが逃したジョブを1回だけ補走する
 
-### サンドボックス／provenance の重要な制約
+### 2コピー構成（重要な制約に基づく設計）
 
-**サンドボックス化されたClaude Codeセッションが作成したファイルは、launchd コンテキストから読めない（Operation not permitted）**。対策としてこのリポジトリの全ファイルは非サンドボックス処理（`git clone`）で作成し直してある。運用上の含意:
+**launchd配下のプロセスはiCloud Drive上のファイルを読めない（Operation not permitted）**。そのため自動実行は非iCloudのランタイムコピーで行い、GitHubをハブに同期する:
 
-- 新しいファイル（スキル・コマンド・スクリプト）をこのリポジトリに追加したら、**GitHubにpushしてから非サンドボックスでpull/cloneし直す**までlaunchdジョブはそれを読めない。bash実行時にサンドボックスを無効化（`dangerouslyDisableSandbox`）しても作成すれば読める
-- 09:00のheadless claude（launchd配下・非サンドボックス）が生成した記事はlaunchdから普通に読めるため、daily運用のサイクル内でこの問題は起きない
+| コピー | パス | 役割 |
+|---|---|---|
+| 作業コピー | iCloud上のこのディレクトリ | Claude Codeでの編集・手動実行 |
+| ランタイムコピー | `~/.claude/anthropic-news/` | 毎朝の自動実行・記事生成・push |
+
+- 同期フロー: 作業コピーで編集→push → 09:00にランタイムがpull → 実行・記事commit→push → 作業コピーでpullすれば最新記事が届く
+- ランタイムコピーにも noreply メールのgit identity設定が必要（clone時に設定済み。再作成時は `git config user.email 50632245+evggzzz@users.noreply.github.com` + user.name evggzzz）
+- スキル・コマンド・スクリプトを変更したら必ずpushすること（pullでランタイムに届くのはpush済みの内容のみ）
 
 ## Commands and Skills
 

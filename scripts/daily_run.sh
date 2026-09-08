@@ -1,6 +1,9 @@
 #!/bin/bash
 # 毎朝09:00に launchd (com.evggzzz.anthropic-news.digest) から実行される
 # Anthropic digest パイプラインの headless ラッパー。
+# ランタイムコピー（~/.claude/anthropic-news、非iCloud）で動く。
+# launchd配下のプロセスはiCloud Drive上のファイルを読めないため、
+# iCloudの作業コピーとはGitHubを介して同期する（pull → 実行 → push）。
 # ログ: logs/daily_YYYYMMDD.log（gitignore済み・非公開）
 
 set -u
@@ -10,11 +13,14 @@ export PATH="/opt/homebrew/bin:/usr/local/bin:$HOME/.local/bin:/usr/bin:/bin"
 export LANG=ja_JP.UTF-8
 export LC_ALL=ja_JP.UTF-8
 
-PROJECT="/Users/duffyyy1130/Library/Mobile Documents/com~apple~CloudDocs/ClaudeCode/mcp_work/news/anthropic-news"
+PROJECT="$HOME/.claude/anthropic-news"
 cd "$PROJECT" || exit 1
 
 mkdir -p logs
 LOG="logs/daily_$(date +%Y%m%d).log"
+
+# スキル・コマンド・スクリプトの更新を取り込む（失敗しても続行）
+git pull --rebase origin main >> "$LOG" 2>&1 || echo "WARN: git pull failed - continue with local state" >> "$LOG"
 
 # 二重実行防止。前回実行のロックが15時間(54000秒)以上残っていれば失効とみなす
 LOCK_DIR="logs/.lock"

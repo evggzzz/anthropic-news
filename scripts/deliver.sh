@@ -1,5 +1,6 @@
 #!/bin/bash
 # 毎朝10:00に launchd (com.evggzzz.anthropic-news.deliver) から実行される配信スクリプト。
+# ランタイムコピー（~/.claude/anthropic-news、非iCloud）の当日記事を扱う。
 # 当日の記事があれば macOS通知（まとめ抜粋）+ VS Codeで記事を開く。なければ未生成通知。
 
 set -u
@@ -8,7 +9,7 @@ export PATH="/opt/homebrew/bin:/usr/local/bin:$HOME/.local/bin:/usr/bin:/bin"
 export LANG=ja_JP.UTF-8
 export LC_ALL=ja_JP.UTF-8
 
-PROJECT="/Users/duffyyy1130/Library/Mobile Documents/com~apple~CloudDocs/ClaudeCode/mcp_work/news/anthropic-news"
+PROJECT="$HOME/.claude/anthropic-news"
 cd "$PROJECT" || exit 1
 
 ARTICLE="articles/anthropic_$(date +%Y%m%d).md"
