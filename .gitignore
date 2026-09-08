@@ -5,3 +5,4 @@ node_modules/
 *_scraper.js
 script_*.js
 tasks/
+logs/

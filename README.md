@@ -31,6 +31,20 @@ Anthropic公式情報の更新を追跡し、週次（または日次）ダイ�
 npm install
 ```
 
+## 毎朝の自動運用（macOS launchd）
+
+- **09:00** パイプライン自動実行（`scripts/daily_run.sh`、日次=当日〜前日の2日窓、重複は自動排除）
+- **10:00** macOS通知＋VS Codeで当日の記事を自動オープン（`scripts/deliver.sh`）
+
+手動で即時実行する場合:
+
+```bash
+launchctl kickstart -k gui/$(id -u)/com.evggzzz.anthropic-news.digest   # 即パイプライン
+launchctl kickstart -k gui/$(id -u)/com.evggzzz.anthropic-news.deliver  # 即通知+オープン
+```
+
+実行ログは `logs/`（gitignore済み）。
+
 ## 成果物
 
 - `articles/anthropic_YYYYMMDD.md` — Zenn形式の日本語ダイジェスト記事（textlint検証済み）

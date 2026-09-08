@@ -13,6 +13,24 @@ Anthropic公式情報の特化ダイジェストプロジェクト。Anthropic�
   - `/anthropic_digest_pipeline 2026-09-08 1` のように日付と日数を指定可能（日次運用・バックフィル）
 - **成果物**: `articles/anthropic_YYYYMMDD.md`（Zenn形式・textlint検証済み）
 
+## 毎朝の自動運用（launchd 2ジョブ構成）
+
+| 時刻 | LaunchAgent | 内容 |
+|---|---|---|
+| 09:00 | `com.evggzzz.anthropic-news.digest` | `scripts/daily_run.sh` — コマンドの `$ARGUMENTS` に「今日 2」を埋め込んで `claude -p --dangerously-skip-permissions` でheadless実行。days=2（昨日〜今日）+ seen_urls重複排除で米国時間の遅延掲載も取りこぼさない |
+| 10:00 | `com.evggzzz.anthropic-news.deliver` | `scripts/deliver.sh` — macOS通知（まとめ抜粋をARGV経由でosascriptに渡す）+ VS Codeで当日記事を開く。記事がなければ「未生成」通知 |
+
+- 手動トリガー: `launchctl kickstart -k gui/$(id -u)/com.evggzzz.anthropic-news.digest`（または deliver）
+- ログ: `logs/daily_YYYYMMDD.log`（gitignore済み）
+- Macがスリープ中でも、解除時にlaunchdが逃したジョブを1回だけ補走する
+
+### サンドボックス／provenance の重要な制約
+
+**サンドボックス化されたClaude Codeセッションが作成したファイルは、launchd コンテキストから読めない（Operation not permitted）**。対策としてこのリポジトリの全ファイルは非サンドボックス処理（`git clone`）で作成し直してある。運用上の含意:
+
+- 新しいファイル（スキル・コマンド・スクリプト）をこのリポジトリに追加したら、**GitHubにpushしてから非サンドボックスでpull/cloneし直す**までlaunchdジョブはそれを読めない。bash実行時にサンドボックスを無効化（`dangerouslyDisableSandbox`）しても作成すれば読める
+- 09:00のheadless claude（launchd配下・非サンドボックス）が生成した記事はlaunchdから普通に読めるため、daily運用のサイクル内でこの問題は起きない
+
 ## Commands and Skills
 
 ### Main Pipeline Command

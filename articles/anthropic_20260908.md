@@ -1,4 +1,4 @@
----
+ように---
 title: "Anthropic更新ダイジェスト - 2026年9月8日"
 emoji: "🤖"
 type: "tech"
