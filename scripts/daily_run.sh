@@ -58,7 +58,19 @@ trap 'rmdir "$LOCK_DIR" 2>/dev/null' EXIT
     exit 1
   fi
 
-  claude -p "$PROMPT" --dangerously-skip-permissions
+  # claude は env -i の密閉環境で起動する（launchd由来の環境変数が混ざると
+  # OAuth（期限切れ）が優選され 401 になるため。必要変数だけ明示的に渡す）
+  env -i HOME="$HOME" \
+    PATH="/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin" \
+    TMPDIR="${TMPDIR:-/tmp}" \
+    GIT_TERMINAL_PROMPT=0 \
+    ANTHROPIC_BASE_URL="${ANTHROPIC_BASE_URL:-}" \
+    ANTHROPIC_AUTH_TOKEN="${ANTHROPIC_AUTH_TOKEN:-}" \
+    ANTHROPIC_DEFAULT_OPUS_MODEL="${ANTHROPIC_DEFAULT_OPUS_MODEL:-}" \
+    ANTHROPIC_DEFAULT_SONNET_MODEL="${ANTHROPIC_DEFAULT_SONNET_MODEL:-}" \
+    ANTHROPIC_DEFAULT_HAIKU_MODEL="${ANTHROPIC_DEFAULT_HAIKU_MODEL:-}" \
+    CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1 \
+    "$HOME/.local/bin/claude" -p "$PROMPT" --dangerously-skip-permissions
   RC=$?
   echo "===== $(date '+%F %T') claude exited rc=$RC ====="
   git log --oneline -3
