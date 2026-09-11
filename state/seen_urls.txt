@@ -24,3 +24,11 @@
 2026-09-10	https://github.com/anthropics/claude-code/releases/tag/v2.1.267
 2026-09-10	https://www.anthropic.com/research/alignment-assessment-cybersecurity-incidents
 2026-09-10	https://github.com/anthropics/claude-agent-sdk-typescript/releases/tag/v0.3.267
+2026-09-11	https://www.anthropic.com/threat-intelligence-report-september-2026
+2026-09-11	claude-apps-release-notes::2026-09-10 Smart reports (beta)
+2026-09-11	https://status.claude.com/incidents/r1pqn1kb4hvk
+2026-09-11	https://status.claude.com/incidents/2pt83vlkk7x7
+2026-09-11	https://github.com/anthropics/claude-agent-sdk-typescript/releases/tag/v0.3.268
+2026-09-11	https://www.anthropic.com/research/intelligence-targeting-conventional-weapons-capabilities
+2026-09-11	https://github.com/anthropics/claude-code/releases/tag/v2.1.268
+2026-09-11	platform-release-notes::2026-09-10 Managed Agents auto permission policies and ant beta:sessions connect
