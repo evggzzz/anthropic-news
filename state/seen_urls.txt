@@ -32,3 +32,6 @@
 2026-09-11	https://www.anthropic.com/research/intelligence-targeting-conventional-weapons-capabilities
 2026-09-11	https://github.com/anthropics/claude-code/releases/tag/v2.1.268
 2026-09-11	platform-release-notes::2026-09-10 Managed Agents auto permission policies and ant beta:sessions connect
+2026-09-12	https://github.com/anthropics/claude-code/releases/tag/v2.1.269
+2026-09-12	https://github.com/anthropics/claude-agent-sdk-typescript/releases/tag/v0.3.269
+2026-09-12	https://status.claude.com/incidents/t33dncr5ydvl
