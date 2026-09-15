@@ -37,3 +37,6 @@
 2026-09-12	https://status.claude.com/incidents/t33dncr5ydvl
 2026-09-13	https://github.com/anthropics/claude-code/releases/tag/v2.1.270
 2026-09-13	https://github.com/anthropics/claude-agent-sdk-typescript/releases/tag/v0.3.270
+2026-09-15	https://github.com/anthropics/claude-code/releases/tag/v2.1.271
+2026-09-15	https://github.com/anthropics/claude-agent-sdk-typescript/releases/tag/v0.3.271
+2026-09-15	https://status.claude.com/incidents/r1pqn1kb4hvk
