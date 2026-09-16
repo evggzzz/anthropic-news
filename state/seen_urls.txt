@@ -40,3 +40,11 @@
 2026-09-15	https://github.com/anthropics/claude-code/releases/tag/v2.1.271
 2026-09-15	https://github.com/anthropics/claude-agent-sdk-typescript/releases/tag/v0.3.271
 2026-09-15	https://status.claude.com/incidents/r1pqn1kb4hvk
+2026-09-16	https://github.com/anthropics/claude-code/releases/tag/v2.1.273
+2026-09-16	https://github.com/anthropics/claude-code/releases/tag/v2.1.272
+2026-09-16	claude-apps-release-notes::2026-09-15 Launching Salesforce in Claude (beta)
+2026-09-16	https://github.com/anthropics/claude-agent-sdk-typescript/releases/tag/v0.3.273
+2026-09-16	https://github.com/anthropics/claude-agent-sdk-typescript/releases/tag/v0.3.272
+2026-09-16	https://github.com/anthropics/claude-agent-sdk-python/releases/tag/v0.2.153
+2026-09-16	https://status.claude.com/incidents/6304r9jjhj34
+2026-09-16	platform-release-notes::2026-09-14 Messages API on-demand conversation compaction beta
