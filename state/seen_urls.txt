@@ -48,3 +48,4 @@
 2026-09-16	https://github.com/anthropics/claude-agent-sdk-python/releases/tag/v0.2.153
 2026-09-16	https://status.claude.com/incidents/6304r9jjhj34
 2026-09-16	platform-release-notes::2026-09-14 Messages API on-demand conversation compaction beta
+2026-09-17	https://status.claude.com/incidents/t8fpw9vcshl9
