@@ -49,3 +49,13 @@
 2026-09-16	https://status.claude.com/incidents/6304r9jjhj34
 2026-09-16	platform-release-notes::2026-09-14 Messages API on-demand conversation compaction beta
 2026-09-17	https://status.claude.com/incidents/t8fpw9vcshl9
+2026-09-18	https://www.anthropic.com/institute/measuring-pace-of-ai-development
+2026-09-18	https://www.anthropic.com/news/life-sciences-verification-program
+2026-09-18	https://github.com/anthropics/claude-code/releases/tag/v2.1.275
+2026-09-18	https://github.com/anthropics/claude-code/releases/tag/v2.1.274
+2026-09-18	https://www.anthropic.com/research/claude-uplifts-biomolecular-modeling
+2026-09-18	platform-release-notes::2026-09-18 Compliance API adds Claude in Chrome session transcripts
+2026-09-18	https://github.com/anthropics/claude-agent-sdk-typescript/releases/tag/v0.3.275
+2026-09-18	https://github.com/anthropics/claude-agent-sdk-typescript/releases/tag/v0.3.274
+2026-09-18	https://github.com/anthropics/claude-agent-sdk-python/releases/tag/v0.2.155
+2026-09-18	https://github.com/anthropics/claude-agent-sdk-python/releases/tag/v0.2.154
