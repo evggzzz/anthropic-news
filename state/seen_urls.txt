@@ -59,3 +59,9 @@
 2026-09-18	https://github.com/anthropics/claude-agent-sdk-typescript/releases/tag/v0.3.274
 2026-09-18	https://github.com/anthropics/claude-agent-sdk-python/releases/tag/v0.2.155
 2026-09-18	https://github.com/anthropics/claude-agent-sdk-python/releases/tag/v0.2.154
+2026-09-19	https://github.com/anthropics/claude-agent-sdk-typescript/releases/tag/v0.3.277
+2026-09-19	https://github.com/anthropics/claude-agent-sdk-typescript/releases/tag/v0.3.276
+2026-09-19	https://github.com/anthropics/claude-agent-sdk-python/releases/tag/v0.2.156
+2026-09-19	https://www.anthropic.com/news/accenture-embedded-evaluation
+2026-09-19	https://github.com/anthropics/claude-code/releases/tag/v2.1.277
+2026-09-19	https://github.com/anthropics/claude-code/releases/tag/v2.1.276
