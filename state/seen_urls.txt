@@ -65,3 +65,5 @@
 2026-09-19	https://www.anthropic.com/news/accenture-embedded-evaluation
 2026-09-19	https://github.com/anthropics/claude-code/releases/tag/v2.1.277
 2026-09-19	https://github.com/anthropics/claude-code/releases/tag/v2.1.276
+2026-09-20	https://github.com/anthropics/claude-code/releases/tag/v2.1.278
+2026-09-20	https://github.com/anthropics/claude-agent-sdk-typescript/releases/tag/v0.3.278
