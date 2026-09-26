@@ -82,3 +82,8 @@
 2026-09-25	https://www.anthropic.com/research/project-swap
 2026-09-25	platform-release-notes::2026-09-24 Refusal billing expansion
 2026-09-25	https://github.com/anthropics/claude-code/releases/tag/v2.1.282
+2026-09-26	https://www.anthropic.com/research/yes-claude-can-do-nine-loops
+2026-09-26	claude-apps-release-notes::2026-09-25 Build plugins for Claude
+2026-09-26	https://github.com/anthropics/claude-code/releases/tag/v2.1.283
+2026-09-26	https://github.com/anthropics/claude-agent-sdk-typescript/releases/tag/v0.3.283
+2026-09-26	https://github.com/anthropics/claude-agent-sdk-python/releases/tag/v0.2.160
