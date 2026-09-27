@@ -1,6 +1,6 @@
 # Claude Agent SDK Changelog - 2026-09-27
 
-> 対象期間: 2026-09-27 〜 2026-09-27（1日分）／取得元: anthropics/claude-agent-sdk-typescript, anthropics/claude-agent-sdk-python
+> 対象期間: 2026-09-26 〜 2026-09-27（2日分）／取得元: anthropics/claude-agent-sdk-typescript, anthropics/claude-agent-sdk-python
 
 ## 対象バージョンなし
 対象期間内の新しいリリースはありませんでした。
