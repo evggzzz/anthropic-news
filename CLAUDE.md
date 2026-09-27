@@ -13,16 +13,11 @@ Anthropic公式情報の特化ダイジェストプロジェクト。Anthropic�
   - `/anthropic_digest_pipeline 2026-09-08 1` のように日付と日数を指定可能（日次運用・バックフィル）
 - **成果物**: `articles/anthropic_YYYYMMDD.md`（Zenn形式・textlint検証済み）
 
-## 毎朝の自動運用（launchd 2ジョブ + ランタイムコピー構成）
+## 自動運用の現状（2026-09-27時点）
 
-| 時刻 | LaunchAgent | 内容 |
-|---|---|---|
-| 09:00 | `com.evggzzz.anthropic-news.digest` | `~/.claude/anthropic-news/scripts/daily_run.sh` — `git pull` で最新化 → コマンドの `$ARGUMENTS` に「今日 2」を埋め込んで `claude -p --dangerously-skip-permissions` でheadless実行 → commit/push。days=2（昨日〜今日）+ seen_urls重複排除で米国時間の遅延掲載も取りこぼさない |
-| 10:00 | `com.evggzzz.anthropic-news.deliver` | `~/.claude/anthropic-news/scripts/deliver.sh` — macOS通知（まとめ抜粋をARGV経由でosascriptに渡す）+ VS Codeで当日記事を開く。記事がなければ「未生成」通知 |
-
-- 手動トリガー: `launchctl kickstart -k gui/$(id -u)/com.evggzzz.anthropic-news.digest`（または deliver）
-- ログ: ランタイムコピーの `logs/daily_YYYYMMDD.log`（gitignore済み）
-- Macがスリープ中でも、解除時にlaunchdが逃したジョブを1回だけ補走する
+- 本プロジェクト単独の LaunchAgent（09:00 digest / 10:00 通知 deliver）は**無効化済み**（plistは `~/Library/LaunchAgents/disabled/` に退避）。ユーザーの指示で停止した
+- 日次生成は **daily_news_app の run_daily.sh（07:00 JST）のステップ2**が担う（`/anthropic_digest_pipeline <今日> 1`）。重複実行にならないよう、本プロジェクト単独のジョブを再開しないこと
+- 再開する場合: `launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/disabled/com.evggzzz.anthropic-news.digest.plist`（deliverも同様）
 
 ### 2コピー構成（重要な制約に基づく設計）
 
